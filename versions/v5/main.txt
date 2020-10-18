@@ -1,0 +1,118 @@
+//write_and_read functie
+     704:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+     708:	4604      	mov	r4, r0
+     
+	 70a:	4615      	mov	r5, r2
+	 70c:	eb02 0801 	add.w	r8, r2, r1
+	 
+	 710:	4545      	cmp	r5, r8
+	 712:	d022      	beq.n	75a <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x56>
+     714:	2608      	movs	r6, #8
+     716:	f815 7b01 	ldrb.w	r7, [r5], #1
+	 
+     71a:	6920      	ldr	r0, [r4, #16]
+     71c:	f3c7 11c0 	ubfx	r1, r7, #7, #1
+	 
+     720:	6803      	ldr	r3, [r0, #0]
+     722:	007f      	lsls	r7, r7, #1
+     724:	681b      	ldr	r3, [r3, #0]
+     726:	4798      	blx	r3
+	 
+     728:	6920      	ldr	r0, [r4, #16]
+     72a:	6803      	ldr	r3, [r0, #0]
+     72c:	685b      	ldr	r3, [r3, #4]
+     72e:	4798      	blx	r3
+	 
+     730:	68a0      	ldr	r0, [r4, #8]
+     732:	2101      	movs	r1, #1
+     734:	6803      	ldr	r3, [r0, #0]
+     736:	681b      	ldr	r3, [r3, #0]
+     738:	4798      	blx	r3
+	 
+     73a:	68a0      	ldr	r0, [r4, #8]
+     73c:	6803      	ldr	r3, [r0, #0]
+     73e:	685b      	ldr	r3, [r3, #4]
+     740:	4798      	blx	r3
+	 
+     742:	68a0      	ldr	r0, [r4, #8]
+     744:	2100      	movs	r1, #0
+     746:	6803      	ldr	r3, [r0, #0]
+     748:	681b      	ldr	r3, [r3, #0]
+     74a:	4798      	blx	r3
+	 
+     74c:	68a0      	ldr	r0, [r4, #8]
+     74e:	6803      	ldr	r3, [r0, #0]
+     750:	685b      	ldr	r3, [r3, #4]
+     752:	4798      	blx	r3
+	 
+     754:	3e01      	subs	r6, #1
+     756:	d1e0      	bne.n	71a <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x16>
+     758:	e7da      	b.n	710 <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0xc>
+     75a:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+	
+	
+// Oude functie
+  00000704 <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh>:  
+     704:	e92d 4ff8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, lr} 	1
+     708:	4604      	mov	r4, r0		2
+	 
+     70a:	468a      	mov	sl, r1		3
+     70c:	4616      	mov	r6, r2		4
+	 70e:	461f      	mov	r7, r3		5
+     710:	f04f 0800 	mov.w	r8, #0	6
+     714:	f100 0b14 	add.w	fp, r0, #20		7
+     718:	45d0      	cmp	r8, sl				8
+     71a:	d033      	beq.n	784 <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x80>	9
+     71c:	2e00      	cmp	r6, #0 		10
+     71e:	d02f      	beq.n	780 <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x7c> 11
+     720:	7835      	ldrb	r5, [r6, #0]	13
+     722:	3601      	adds	r6, #1		14
+     724:	f04f 0908 	mov.w	r9, #8		15
+     728:	6920      	ldr	r0, [r4, #16]	17
+     72a:	f3c5 11c0 	ubfx	r1, r5, #7, #1 	18
+     72e:	6803      	ldr	r3, [r0, #0]  20
+     730:	006d      	lsls	r5, r5, #1 21
+     732:	681b      	ldr	r3, [r3, #0] 23
+     734:	4798      	blx	r3 26
+	 
+     736:	6920      	ldr	r0, [r4, #16] 28
+     738:	6803      	ldr	r3, [r0, #0] 30
+     73a:	685b      	ldr	r3, [r3, #4] 32
+     73c:	4798      	blx	r3 35
+	 
+     73e:	68a0      	ldr	r0, [r4, #8] 37
+     740:	2101      	movs	r1, #1 38
+     742:	6803      	ldr	r3, [r0, #0] 40
+     744:	681b      	ldr	r3, [r3, #0] 42
+     746:	4798      	blx	r3 45
+	 
+     748:	68a0      	ldr	r0, [r4, #8] 47
+     74a:	6803      	ldr	r3, [r0, #0] 49
+     74c:	685b      	ldr	r3, [r3, #4] 51
+     74e:	4798      	blx	r3 54
+	 
+     750:	4658      	mov	r0, fp 55
+     752:	f7ff feab 	bl	4ac <_ZN5hwlib20pin_direct_from_in_t4readEv> 56
+     756:	b108      	cbz	r0, 75c <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x58> 57
+     758:	f045 0501 	orr.w	r5, r5, #1 58
+     75c:	68a0      	ldr	r0, [r4, #8] 60
+     75e:	2100      	movs	r1, #0 61
+     760:	6803      	ldr	r3, [r0, #0] 63
+     762:	681b      	ldr	r3, [r3, #0] 65
+     764:	4798      	blx	r3 68
+	 
+     766:	68a0      	ldr	r0, [r4, #8] 70
+     768:	6803      	ldr	r3, [r0, #0] 72
+     76a:	685b      	ldr	r3, [r3, #4] 74
+     76c:	4798      	blx	r3 77
+	 
+     76e:	f1b9 0901 	subs.w	r9, r9, #1 78
+     772:	d1d9      	bne.n	728 <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x24> 81
+     774:	b10f      	cbz	r7, 77a <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x76> 82
+     776:	703d      	strb	r5, [r7, #0] 84
+     778:	3701      	adds	r7, #1 85
+     77a:	f108 0801 	add.w	r8, r8, #1 86
+     77e:	e7cb      	b.n	718 <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x14> 87
+     780:	4635      	mov	r5, r6 88
+     782:	e7cf      	b.n	724 <_ZN5hwlib16spi_bus_matthijs14write_and_readEjPKhPh+0x20> 89
+     784:	e8bd 8ff8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, pc} 90
